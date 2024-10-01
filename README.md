@@ -33,3 +33,6 @@ https://djitellopy.readthedocs.io/en/latest/tello/
 
 GIT READ ME
 https://github.com/damiafuentes/DJITelloPy/blob/master/README.md
+
+DISCORD
+https://discord.gg/7w9QfEcxP6
