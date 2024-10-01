@@ -36,3 +36,6 @@ https://github.com/damiafuentes/DJITelloPy/blob/master/README.md
 
 DISCORD
 https://discord.gg/7w9QfEcxP6
+
+NEUROCITY DISCORD
+https://discord.gg/Duk55aEb
