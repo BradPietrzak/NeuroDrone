@@ -4,7 +4,11 @@ The Neuro Drone
 the Photo uploaded is everyones contact information
 this photo will be removed once the project is complete
 
-WEBSIGHT FOR THE CROWN
+MEETING LOGS/SUMMARIES DOCUMENT
+https://docs.google.com/document/d/1-ZaanQ7I2JovT2--gqgbEFH1vCsQIIB9KGjbtYIMWTc/edit?usp=sharing
+
+# Resources
+WEBSITE FOR THE CROWN
 https://neurosity.co/
 
 
