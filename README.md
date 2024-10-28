@@ -43,3 +43,6 @@ https://discord.gg/7w9QfEcxP6
 
 NEUROCITY DISCORD
 https://discord.gg/Duk55aEb
+
+brain research
+https://people.ece.cornell.edu/land/courses/ece4760/FinalProjects/s2012/cwm55/cwm55_mj294/
