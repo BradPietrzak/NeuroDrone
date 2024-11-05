@@ -27,39 +27,6 @@ const neurosity = new Neurosity({
   deviceId
 });
 
-// List of thoughts to train
-const thoughts = ["leftHandPinch", "rightHandPinch", "leftArm", "rightArm"];
-let currentThoughtIndex = 0;
-
-// Helper function to display current thought
-const displayCurrentThought = () => {
-  console.log(`Currently training thought: ${thoughts[currentThoughtIndex]}`);
-};
-
-// Set up a readline interface for user input
-const rl = readline.createInterface({
-  input: process.stdin,
-  output: process.stdout
-});
-
-// Function to toggle through thoughts
-const toggleThought = () => {
-  currentThoughtIndex = (currentThoughtIndex + 1) % thoughts.length;
-  displayCurrentThought();
-};
-
-// Function to start training the selected thought
-const trainThought = () => {
-  const thoughtToTrain = thoughts[currentThoughtIndex];
-  neurosity.kinesis(thoughtToTrain).subscribe((intent) => {
-    if (intent.confidence > 0.8) { 
-      console.log(`Detected ${thoughtToTrain}`);
-    }
-  });
-  console.log(`Training on thought: ${thoughtToTrain}`);
-};
-
-// Main function to log in and start thought training
 const main = async () => {
   await neurosity
     .login({
