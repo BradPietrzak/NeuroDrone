@@ -1,3 +1,10 @@
+"""
+This script collects raw unfiltered brainwave data from a Neurosity device.
+
+It logs in to the Neurosity SDK using credentials from a .env file, subscribes
+to brainwave data, and saves it to a JSON file (`eeg_data_test.json`) for further analysis.
+"""
+
 from datetime import time as datetime_time  # Alias to avoid conflict with the time module
 import time  # Import the standard time module for sleep
 import json
@@ -23,6 +30,15 @@ neurosity.login({
 })
 
 def callback(data):
+    """
+    Callback function to handle incoming brainwave data.
+
+    Args:
+        data (dict): A dictionary containing raw unfiltered brainwave data.
+
+    This function appends the received data to the global `all_brain_data` list,
+    then writes the entire dataset to a JSON file (`eeg_data_test.json`).
+    """
         print("data", data)
 
         all_brain_data.append(data)
