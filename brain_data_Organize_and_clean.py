@@ -14,6 +14,7 @@ def load_json_from_file(file_path):
     return data
 
 def print_flat_array(array):
+    #debug function ignore
     print("hello")
     for row in array:
         if isinstance(row, list):  # Check if row is a list (for 2D)
