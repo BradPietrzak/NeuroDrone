@@ -46,8 +46,7 @@ plt.plot(t, filtered_data, color='orange')
 plt.title('Filtered EEG Data (Alpha Band)')
 plt.tight_layout()
 plt.show()
-NEW
-[4:28 AM]
+
 OUTPUT OF CODE
 ![image](https://github.com/user-attachments/assets/44dc09ea-9e35-4e1a-865c-21d54638754a)
 
