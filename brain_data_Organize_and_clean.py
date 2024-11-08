@@ -1,3 +1,15 @@
+"""
+This script processes and merges EEG brainwave data from JSON files.
+
+It provides the following functionality:
+1. Loads raw JSON data from a specified file.
+2. Validates and processes the JSON data.
+3. Merges the "data" fields from multiple JSON objects.
+4. Saves the merged data into a new JSON file for further analysis.
+
+The script is designed to handle structured JSON data containing EEG brainwave recordings.
+"""
+
 import json
 import os
 
