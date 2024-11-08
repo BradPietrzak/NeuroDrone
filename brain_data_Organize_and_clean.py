@@ -7,7 +7,7 @@ It provides the following functionality:
 3. Merges the "data" fields from multiple JSON objects.
 4. Saves the merged data into a new JSON file for further analysis.
 
-The script is designed to handle structured JSON data containing EEG brainwave recordings.
+The script is designed to handle structured JSON data containing EEG brainwave recordings from a neurocity device.
 """
 
 import json
