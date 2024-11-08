@@ -145,6 +145,7 @@ Convolution Operation:
 ![image](https://github.com/user-attachments/assets/1e9050a2-d9fe-4c61-be78-fc2ca8e86835)
 ![image](https://github.com/user-attachments/assets/b85c2029-5299-451f-ba7f-f630621064c8)
 ![image](https://github.com/user-attachments/assets/77b4e222-ecf3-4338-8e69-5583a1bbf893)
+
 3.3. Common Filter Design Methods
 
 Butterworth Filters:
