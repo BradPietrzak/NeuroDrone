@@ -95,6 +95,7 @@ a. Low-Pass Filters (LPF)
 Function: Allow frequencies below a specified cutoff frequency fc to pass while attenuating higher frequencies,
 
 Mathematical Representation:
+
 ![image](https://github.com/user-attachments/assets/5f7c845c-442d-4229-bd1a-0fd509f0a9c3)
 
 Applications in EEG:
@@ -105,6 +106,7 @@ b. High-Pass Filters (HPF)
 Function: Allow frequencies above a specified cutoff frequency 𝑓𝑐
   to pass while attenuating lower frequencies.
 Mathematical Representation:
+
 ![image](https://github.com/user-attachments/assets/207011e7-f412-4932-bb44-a1707cfc7d12)
 
 Applications in EEG:
@@ -116,6 +118,7 @@ Function: Allow frequencies within a specified range
 [𝑓𝑙𝑜𝑤,𝑓ℎ𝑖𝑔ℎ]
 [f low,f high] to pass while attenuating frequencies outside this range.
 Mathematical Representation:
+
 ![image](https://github.com/user-attachments/assets/37616040-fcfd-4809-b7c9-7815541dcbe4)
 
 Applications in EEG:
@@ -126,6 +129,7 @@ d. Notch Filters (Band-Stop Filters)
 Function: Attenuate a narrow frequency band around a center frequency 𝑓0
   while allowing other frequencies to pass.
 Mathematical Representation:
+
 ![image](https://github.com/user-attachments/assets/90d6b81b-5554-4201-ada2-dbfe2f2ba334)
 
 Applications in EEG:
@@ -138,6 +142,7 @@ Linear Time-Invariant (LTI) Systems: Filters are often modeled as LTI systems ch
 ℎ(𝑡) h(t) or frequency response 𝐻(𝑓)
 H(f).
 Convolution Operation:
+
 ![image](https://github.com/user-attachments/assets/1e9050a2-d9fe-4c61-be78-fc2ca8e86835)
 ![image](https://github.com/user-attachments/assets/b85c2029-5299-451f-ba7f-f630621064c8)
 ![image](https://github.com/user-attachments/assets/77b4e222-ecf3-4338-8e69-5583a1bbf893)
@@ -163,6 +168,7 @@ Elliptic Filters:
 Characteristics: Ripples in both passband and stopband; steepest roll-off for a given filter order.
 Bessel Filters:
 Characteristics: Linear phase response in the passband; preserves waveform shape.
+
 ![image](https://github.com/user-attachments/assets/32b1fa2c-5870-4bc5-a680-5a1472622542)
 
 from scipy.signal import butter, filtfilt
