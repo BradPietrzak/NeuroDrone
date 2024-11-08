@@ -45,6 +45,7 @@ NEUROCITY DISCORD
 https://discord.gg/Duk55aEb
 
 BRAIN RESEARCH(EEG)
+
 https://people.ece.cornell.edu/land/courses/ece4760/FinalProjects/s2012/cwm55/cwm55_mj294/
 
 https://pmc.ncbi.nlm.nih.gov/articles/PMC7283463/
