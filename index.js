@@ -1,26 +1,24 @@
-
-
 const { Neurosity } = require("@neurosity/sdk");
-require("dotenv").config();
 
-const deviceId = process.env.DEVICE_ID || "";
-const email = process.env.EMAIL || "";
-const password = process.env.PASSWORD || "";
-
+/*
+const deviceId = document.getElementById("deviceId");
+const email = document.getElementById("username");
+const password = document.getElementById("password");
+*/
 const verifyEnvs = (email, password, deviceId) => {
   const invalidEnv = (env) => {
     return env === "" || env === 0;
   };
+
+  // Validate if the required environment variables are provided
   if (invalidEnv(email) || invalidEnv(password) || invalidEnv(deviceId)) {
     console.error(
-      "Please verify deviceId, email and password are in .env file, quitting..."
+      "Please verify deviceId, email, and password are provided, quitting..."
     );
-    process.exit(0);
+    document.getElementById("error").innerHTML = "Invalid Login";
+    
   }
 };
-verifyEnvs(email, password, deviceId);
-
-console.log(`${email} attempting to authenticate to ${deviceId}`);
 
 const neurosity = new Neurosity({
     deviceId
@@ -38,10 +36,7 @@ const main = async () => {
     });
   console.log("Logged in");
 
-  neurosity.kinesis("tongue").subscribe((intent) => {
-    console.log(intent);
-  });
+ 
 };
 
-main();
 

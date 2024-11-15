@@ -6,3 +6,8 @@
     background: radial-gradient(rgb(137, 105, 171),rgb(81, 95, 204));
 
 }
+
+.test-col {
+    background: linear-gradient(to right, #3b82f6, #6366f1, #8b5cf6);
+}
+
