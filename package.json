@@ -1,0 +1,8 @@
+{
+  "dependencies": {
+    "dgram": "^1.0.1",
+    "express": "^4.21.1",
+    "iohook": "^0.9.3",
+    "socket.io": "^4.8.1"
+  }
+}
