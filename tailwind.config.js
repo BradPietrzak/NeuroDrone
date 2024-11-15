@@ -1,6 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ['./headset/*.html'],
+  content: ['./NeuroDrone/*.html'],
   theme: {
     extend: {},
   },
