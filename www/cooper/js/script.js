@@ -9,37 +9,71 @@ function connect() {
     sendCommand('command')
 }
 
+// rc a b c d
+// a: left/right
+// b: forward/backward
+// c: up/down
+// d: yaw
 document.addEventListener('keydown', (event) => {
     switch (event.key) {
         case 'w':
-            sendCommand('forward 50');
+            sendCommand('rc 0 50 0 0');
             break;
         case 's':
-            sendCommand('back 50');
+            sendCommand('rc 0 -50 0 0');
             break;
         case 'a':
-            sendCommand('left 50');
+            sendCommand('rc -50 0 0 0');
             break;
         case 'd':
-            sendCommand('right 50');
+            sendCommand('rc 50 0 0 0');
             break;
         case 'ArrowUp':
-            sendCommand('up 50');
+            sendCommand('rc 0 0 50 0');
             break;
         case 'ArrowDown':
-            sendCommand('down 50');
+            sendCommand('rc 0 0 -50 0');
             break;
         case 'q':
-            sendCommand('ccw 90');
+            sendCommand('rc 0 0 0 -50');
             break;
         case 'e':
-            sendCommand('cw 90');
+            sendCommand('rc 0 0 0 50');
             break;
         case 't':
             sendCommand('takeoff');
             break;
         case 'l':
             sendCommand('land');
+            break;
+    }
+});
+
+document.addEventListener('keyup', (event) => {
+    switch (event.key) {
+        case 'w':
+            sendCommand('rc 0 0 0 0');
+            break;
+        case 's':
+            sendCommand('rc 0 0 0 0');
+            break;
+        case 'a':
+            sendCommand('rc 0 0 0 0');
+            break;
+        case 'd':
+            sendCommand('rc 0 0 0 0');
+            break;
+        case 'ArrowUp':
+            sendCommand('rc 0 0 0 0');
+            break;
+        case 'ArrowDown':
+            sendCommand('rc 0 0 0 0');
+            break;
+        case 'q':
+            sendCommand('rc 0 0 0 0');
+            break;
+        case 'e':
+            sendCommand('rc 0 0 0 0');
             break;
     }
 });
