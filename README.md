@@ -1,8 +1,12 @@
 # NeuroDrone
 The Neuro Drone
 
-the Photo uploaded is everyones contact information
-this photo will be removed once the project is complete
+    name        - git           - email         - phone
+Jack Kurtz - Jack1065 - JKurtz354@gmail.com - 262-527-6156
+Cooper Recob - CooperRecob - crecob1@gmail.com - 920-222-3583
+Michael Cobb - cobbm07 - michaelcobb200221 @gmail.com - 262-374-4924
+Chris Hoffman - Packets2040 - Chris.Hoffmann399@gmail.com - 920-530-2094
+Brad Pietrzak - BradPietrzak - pietrzakba18@uww.edu - 612-300-6253
 
 MEETING LOGS/SUMMARIES DOCUMENT
 https://docs.google.com/document/d/1-ZaanQ7I2JovT2--gqgbEFH1vCsQIIB9KGjbtYIMWTc/edit?usp=sharing
