@@ -2,6 +2,7 @@
 The Neuro Drone
 
 name        - git           - email         - phone
+
 Jack Kurtz - Jack1065 - JKurtz354@gmail.com - 262-527-6156
 Cooper Recob - CooperRecob - crecob1@gmail.com - 920-222-3583
 Michael Cobb - cobbm07 - michaelcobb200221 @gmail.com - 262-374-4924
