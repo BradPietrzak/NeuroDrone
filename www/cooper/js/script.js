@@ -14,6 +14,8 @@ function connect() {
 // b: forward/backward
 // c: up/down
 // d: yaw
+// space: emergeny stop
+// p: stats
 document.addEventListener('keydown', (event) => {
     switch (event.key) {
         case 'w':
@@ -46,34 +48,37 @@ document.addEventListener('keydown', (event) => {
         case 'l':
             sendCommand('land');
             break;
+        case ' ':
+            sendCommand('emergency');
+            break;
     }
 });
 
 document.addEventListener('keyup', (event) => {
     switch (event.key) {
         case 'w':
-            sendCommand('rc 0 0 0 0');
+            sendCommand('stop');
             break;
         case 's':
-            sendCommand('rc 0 0 0 0');
+            sendCommand('stop');
             break;
         case 'a':
-            sendCommand('rc 0 0 0 0');
+            sendCommand('stop');
             break;
         case 'd':
-            sendCommand('rc 0 0 0 0');
+            sendCommand('stop');
             break;
         case 'ArrowUp':
-            sendCommand('rc 0 0 0 0');
+            sendCommand('stop');
             break;
         case 'ArrowDown':
-            sendCommand('rc 0 0 0 0');
+            sendCommand('stop');
             break;
         case 'q':
-            sendCommand('rc 0 0 0 0');
+            sendCommand('stop');
             break;
         case 'e':
-            sendCommand('rc 0 0 0 0');
+            sendCommand('stop');
             break;
     }
 });
