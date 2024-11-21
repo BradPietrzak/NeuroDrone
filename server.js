@@ -24,6 +24,11 @@ const loginRouter = require('./routes/login')
 app.use('/login', loginRouter);
 
 
+app.get('/login-error', (req, res) => { 
+    res.sendFile(path.join(__dirname, 'headset/error.html'));
+ });
+
+
 
 server.listen(port, () => {
     console.log(`Listening on port ${port}`);

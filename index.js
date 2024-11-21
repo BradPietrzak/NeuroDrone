@@ -22,8 +22,8 @@ async function main(email, password, neurosity) {
 try{
   await neurosity
     .login({
-      email,
-      password
+      email: email,
+      password: password
     });
     console.log('Logged in successfully');
     return true;
@@ -33,5 +33,6 @@ try{
       return false;
   }
 };
+
 
 module.exports = {processLogin, main};

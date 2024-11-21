@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Neuro Drone - Login Error</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="test-col min-h-screen flex flex-col items-center justify-center">
+
+    <div class="w-full py-2 shadow-lg flex justify-center items-center bg-black fixed top-0 left-0">
+        <h1 class="text-6xl font-serif text-white">Neuro Drone</h1>
+    </div>
+    
+    <div class="radial-blue w-96 p-6 rounded-lg  outline-2 outline-red-600 shadow-2xl mt-20 border-spacing-2">
+        <!-- Error message container -->
+        <div class="text-red-500 mb-4">Invalid login. Please try again.</div>
+        
+        <form id="loginForm" class="flex flex-col space-y-4" action="/login" method="post">
+            <div>
+                <label for="username" class="text-white block mb-1">Username</label>
+                <input type="text" id="username" name="username" class="w-full p-2 rounded border border-blue-300 focus:outline-none focus:ring-2 focus:ring-blue-500">
+            </div>
+            <div>
+                <label for="password" class="text-white block mb-1">Password</label>
+                <input type="password" id="password" name="password" class="w-full p-2 rounded border border-blue-300 focus:outline-none focus:ring-2 focus:ring-blue-500">
+            </div>
+            <div>
+                <label for="device-id" class="text-white block mb-1">Device ID</label>
+                <input type="text" id="device-id" name="deviceID" class="w-full p-2 rounded border border-blue-300 focus:outline-none focus:ring-2 focus:ring-blue-500">
+            </div>
+            <button type="submit" class="bg-black text-white font-bold py-2 px-4 rounded-full transition duration-200 hover:bg-white hover:text-black">
+                Login
+            </button>
+        </form>
+    </div>
+
+</body>
+</html>
+
+
+

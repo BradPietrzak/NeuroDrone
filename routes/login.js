@@ -4,7 +4,7 @@ const express = require('express');
 const path = require('path');
 const bodyParser = require('body-parser');
 const router = express.Router();
-const { processLogin, main } = require('../index');
+const { processLogin, main} = require('../index');
 
 
 
@@ -18,28 +18,33 @@ router.post("/", async(req,res) => {
 
     if (!processLogin(username,password,deviceID)){
         console.log('Login Error')
-        return res.status(400).send("Invalid Login");
+        return res.redirect('/login-error');
     }
 
     const neurosity = new Neurosity({
-        deviceID
+        deviceId:deviceID,
+        timesync: true
     })
 
     const loggedIn= await main(username, password, neurosity);
     if(loggedIn){
+
         res.sendFile(path.join(__dirname, '../headset/controls.html'));
     }
     else{
         console.log("Login Failed");
-        res.status(401).send('Failed to login');
+        return res.redirect('/login-error');
+
     }
    }
    catch(error){
     console.log(error);
-    res.status(500).send('error occured');
+    return res.redirect('/login-error');
    }
-
-
 });
+router.get("/login-error", (req, res) => { 
+    res.sendFile(path.join(__dirname, '../headset/error.html'));
+});
+
 
 module.exports = router;
