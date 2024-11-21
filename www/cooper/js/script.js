@@ -15,7 +15,6 @@ function connect() {
 // c: up/down
 // d: yaw
 // space: emergeny stop
-// p: stats
 document.addEventListener('keydown', (event) => {
     switch (event.key) {
         case 'w':
