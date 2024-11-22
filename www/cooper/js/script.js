@@ -93,17 +93,5 @@ document.addEventListener('keyup', (event) => {
         case 'e':
             sendCommand('rc 0 0 0 0');
             break;
-        case 'Arrowleft':
-            sendCommand('rc 0 0 0 0');
-            break;
-        case 'Arrowright':
-            sendCommand('rc 0 0 0 0');
-            break;
-        case 'f':
-            sendCommand('rc 0 0 0 0');
-            break;
-        case 'b':
-            sendCommand('rc 0 0 0 0');
-            break;
     }
 });
