@@ -8,13 +8,15 @@ function sendCommand(command) {
 function connect() {
     sendCommand('command')
 }
-
+function sleep() {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
 // rc a b c d
 // a: left/right
 // b: forward/backward
 // c: up/down
 // d: yaw
-// space: emergeny stop
+// space: emergency stop
 document.addEventListener('keydown', (event) => {
     switch (event.key) {
         case 'w':
@@ -50,6 +52,18 @@ document.addEventListener('keydown', (event) => {
         case '`':
             sendCommand('emergency');
             break;
+        case 'ArrowLeft':
+            sendCommand('flip l');
+            break;
+        case 'ArrowRight':
+            sendCommand('flip r');
+            break;
+        case 'f':
+            sendCommand('flip f');
+            break;
+        case 'b':
+            sendCommand('flip b');
+            break;
     }
 });
 
@@ -77,6 +91,18 @@ document.addEventListener('keyup', (event) => {
             sendCommand('rc 0 0 0 0');
             break;
         case 'e':
+            sendCommand('rc 0 0 0 0');
+            break;
+        case 'Arrowleft':
+            sendCommand('rc 0 0 0 0');
+            break;
+        case 'Arrowright':
+            sendCommand('rc 0 0 0 0');
+            break;
+        case 'f':
+            sendCommand('rc 0 0 0 0');
+            break;
+        case 'b':
             sendCommand('rc 0 0 0 0');
             break;
     }
