@@ -18,7 +18,8 @@
     "dotenv": "^16.4.5",
     "express": "^4.21.1",
     "http": "^0.0.1-security",
-    "punycode": "^2.3.1"
+    "punycode": "^2.3.1",
+    "socket.io": "^4.8.1"
   },
   "devDependencies": {
     "nodemon": "^3.1.7"

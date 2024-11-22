@@ -21,8 +21,11 @@ io.on('connection', (socket) => {
     });
 });
 
+// 25-28 checks if it is running in a dockerfile or not
+const isDocker = process.env.DOCKER === 'true';
+
 const PORT = 80;
-const ADDR = 'localhost';
+const ADDR = isDocker ? '0.0.0.0' : 'localhost'; 
 
 server.listen(PORT, ADDR, () => {
     console.log(`Server listening on http://${ADDR}:${PORT}`);
