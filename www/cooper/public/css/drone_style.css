@@ -1,0 +1,82 @@
+#connect {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+#takeoff{
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+}
+
+#land{
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+}
+
+#back {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f3f3f3;
+}
+
+.container {
+    display: grid;
+    grid-template-areas:
+        "left2 left center right right2";
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    gap: 10px;
+}
+
+.center {
+    grid-area: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.center button {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+button {
+    padding: 15px;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+.takeoff,
+.land, .forward,
+.back, .up, .down {
+    margin: 5px;
+}
+
+.left {
+    grid-area: left;
+}
+
+.right {
+    grid-area: right;
+}
+
+.out-left {
+    grid-area: left2;
+}
+
+.out-right {
+    grid-area: right2;
+}
