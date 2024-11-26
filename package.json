@@ -1,5 +1,27 @@
 {
+  "name": "headset",
+  "version": "1.0.0",
+  "description": "Neurosity Crown Tele-drone link",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js",
+    "devStart": "nodemon server.js"
+  },
+  "keywords": [
+    "neurosity"
+  ],
+  "author": "",
+  "license": "ISC",
   "dependencies": {
-    "node-gamepad": "^0.1.15"
+    "@neurosity/sdk": "^6.5.10",
+    "dotenv": "^16.4.5",
+    "express": "^4.21.1",
+    "http": "^0.0.1-security",
+    "punycode": "^2.3.1",
+    "socket.io": "^4.8.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.7"
   }
 }
