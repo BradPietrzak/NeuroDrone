@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "node-gamepad": "^0.1.15"
+  }
+}

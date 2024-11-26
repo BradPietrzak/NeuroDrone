@@ -22,6 +22,16 @@
     left: 10px;
 }
 
+#batterycheck {
+    position: absolute;
+    top: 10px;
+    left: 150px;
+}
+#controller {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+}
 body {
     display: flex;
     justify-content: center;
@@ -61,7 +71,7 @@ button {
 
 .takeoff,
 .land, .forward,
-.back, .up, .down, .flipf, .flipb, .flipl, .flipr {
+.back, .up, .down, .flipf, .flipb, .flipl, .flipr, .battery, .controller {
     margin: 5px;
 }
 
