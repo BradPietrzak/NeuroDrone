@@ -17,14 +17,11 @@
     "@neurosity/sdk": "^6.5.10",
     "dotenv": "^16.4.5",
     "express": "^4.21.1",
-<<<<<<< HEAD
     "ffmpeg": "^0.0.4",
+    "http": "^0.0.1-security",
     "open": "^10.1.0",
     "opn": "^5.5.0",
-=======
-    "http": "^0.0.1-security",
     "punycode": "^2.3.1",
->>>>>>> adding-extra-commands-for-the-drone
     "socket.io": "^4.8.1"
   },
   "devDependencies": {
