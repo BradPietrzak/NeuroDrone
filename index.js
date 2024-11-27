@@ -7,7 +7,7 @@ const password = document.getElementById("password");
 */
 function processLogin(username, password, deviceId) {
   // Validate if the required environment variables are provided
-  if (username == ""|| password == "" || deviceId == "") {
+  if (username == "" || password == "" || deviceId == "") {
     console.error(
       "Please verify deviceId, email, and password are provided, quitting..."
     );
@@ -34,5 +34,5 @@ try{
   }
 };
 
-
+// This is a comment
 module.exports = {processLogin, main};
