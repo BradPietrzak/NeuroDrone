@@ -10,12 +10,19 @@
 
 <body>
     <button id="back" onclick="location.href='/'">Home / Back</button>
-    <button id="connect" onclick="connect()">Connect</button>
+    <button id="connect" onclick='connect()'>Connect</button>
     <div class="container">
         <button class="left" onclick="sendCommand('left 50')">Left (a)</button>
         <button class="right" onclick="sendCommand('right 50')">Right (d)</button>
         <button class="out-left" onclick="sendCommand('ccw 90')">Turn Left (q)</button>
         <button class="out-right" onclick="sendCommand('cw 90')">Turn Right (e)</button>
+
+        <div class="flip">
+            <button class="flipf" onclick="sendCommand('flip f')">Flip forward (f) </button>
+            <button class="flipb" onclick="sendCommand('flip b')">Flip backwards (b)</button>
+            <button class="flipl" onclick="sendCommand('flip l')">Flip Left (←)</button>
+            <button class="flipr" onclick="sendCommand('flip r')">Flip Right (→)</button>
+        </div>
 
         <div class="center">
             <button class="up" onclick="sendCommand('up 50')">Up (↑)</button>
@@ -30,7 +37,6 @@
 
     <script src="/socket.io/socket.io.js"></script>
     <script src="js/script.js"></script>
-    <script src="js/drone.js"></script>
 </body>
 
 </html>
