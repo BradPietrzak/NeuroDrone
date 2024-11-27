@@ -11,7 +11,6 @@
 <body>
     <button id="back" onclick="location.href='/'">Home / Back</button>
     <button id="connect" onclick='connect()'>Connect</button>
-    <button id="batterycheck" onclick='batterycheck2()'>Battery Level: <span id="batterypercentage"></span></button>
     <div class="container">
         <button class="left" onclick="sendCommand('left 50')">Left (a)</button>
         <button class="right" onclick="sendCommand('right 50')">Right (d)</button>
@@ -38,7 +37,6 @@
 
     <script src="/socket.io/socket.io.js"></script>
     <script src="js/script.js"></script>
-    <script src="js/drone.js"></script>
 </body>
 
 </html>
