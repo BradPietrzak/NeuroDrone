@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tello Video Stream</title>
+</head>
+<body>
+  <h1>Tello Video Stream</h1>
+  <video id="video" controls autoplay></video>
+  <script>
+    const videoElement = document.getElementById("video");
+    const ws = new WebSocket("ws://localhost:3000/video-stream");
+
+    ws.onmessage = (event) => {
+      const arrayBuffer = event.data;
+      const blob = new Blob([arrayBuffer], { type: 'video/mp4' });
+      const url = URL.createObjectURL(blob);
+      videoElement.src = url;
+    };
+
+    ws.onerror = (error) => {
+      console.error("WebSocket Error:", error);
+    };
+  </script>
+</body>
+</html>
