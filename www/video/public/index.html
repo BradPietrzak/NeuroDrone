@@ -1,27 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Tello Video Stream</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Drone Video Stream</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+        video {
+            width: 80%;
+            max-width: 800px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            font-size: 2em;
+            color: #333;
+        }
+    </style>
 </head>
 <body>
-  <h1>Tello Video Stream</h1>
-  <video id="video" controls autoplay></video>
-  <script>
-    const videoElement = document.getElementById("video");
-    const ws = new WebSocket("ws://localhost:3000/video-stream");
+    <div>
+        <h1>Drone Video Stream</h1>
+        <video id="video" controls autoplay></video>
+    </div>
 
-    ws.onmessage = (event) => {
-      const arrayBuffer = event.data;
-      const blob = new Blob([arrayBuffer], { type: 'video/mp4' });
-      const url = URL.createObjectURL(blob);
-      videoElement.src = url;
-    };
-
-    ws.onerror = (error) => {
-      console.error("WebSocket Error:", error);
-    };
-  </script>
+    <script>
+        const video = document.getElementById("video");
+        video.src = "http://localhost:3000/video-stream";
+    </script>
 </body>
 </html>
