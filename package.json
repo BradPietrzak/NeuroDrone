@@ -22,9 +22,11 @@
     "open": "^10.1.0",
     "opn": "^5.5.0",
     "punycode": "^2.3.1",
-    "socket.io": "^4.8.1"
+    "socket.io": "^4.8.1",
+    "three": "^0.171.0"
   },
   "devDependencies": {
-    "nodemon": "^3.1.7"
+    "nodemon": "^3.1.7",
+    "vite": "^6.0.1"
   }
 }
