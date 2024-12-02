@@ -5,8 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Neuro Drone</title>
     <link rel="stylesheet" href="css/style.css">
+    <script type="importmap">
+        {
+          "imports": {
+            "three": "https://cdn.jsdelivr.net/npm/three@0.171.0/build/three.module.js",
+            "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.171.0/examples/jsm/"
+          }
+        }
+    </script>
 </head>
 <body class="test-col min-h-screen flex flex-col items-center justify-center">
+    
+    <script type="module" src="./three_tests/main.js"></script>
 
     <div class="w-full py-2 shadow-lg flex justify-center items-center bg-black fixed top-0 left-0">
         <h1 class="text-6xl font-serif text-white">Neuro Drone</h1>
