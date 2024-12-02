@@ -1,4 +1,4 @@
-import { modelCenter } from "/js/main.js";
+import * as MODEL from "/js/main.js";
 
 const socket = io();
 
@@ -7,7 +7,7 @@ function sendCommand(command) {
     console.log(`Sent command: ${command}`);
 }
 
-async function connect() {
+export async function connect() {
     const levelDiv = document.getElementById('connect');
 
     try {
@@ -35,27 +35,35 @@ document.addEventListener('keydown', (event) => {
     switch (event.key) {
         case 'w':
             sendCommand('rc 0 50 0 0');
+            MODEL.modelPosition(0, 0, -3, 0);
             break;
         case 's':
             sendCommand('rc 0 -50 0 0');
+            MODEL.modelPosition(0, 0, 3, 0);
             break;
         case 'a':
             sendCommand('rc -50 0 0 0');
+            MODEL.modelPosition(-3, 0, 0, 0);
             break;
         case 'd':
             sendCommand('rc 50 0 0 0');
+            MODEL.modelPosition(3, 0, 0, 0);
             break;
         case 'ArrowUp':
             sendCommand('rc 0 0 50 0');
+            MODEL.modelPosition(0, 3, 0, 0);
             break;
         case 'ArrowDown':
             sendCommand('rc 0 0 -50 0');
+            MODEL.modelPosition(0, -3, 0, 0);
             break;
         case 'q':
             sendCommand('rc 0 0 0 -50');
+            MODEL.modelPosition(0, 0, 0, 0.5);
             break;
         case 'e':
             sendCommand('rc 0 0 0 50');
+            MODEL.modelPosition(0, 0, 0, -0.5);
             break;
         case 't':
             sendCommand('takeoff');
@@ -111,7 +119,7 @@ document.addEventListener('keyup', (event) => {
             //break;
         case 'e':
             sendCommand('rc 0 0 0 0');
-            modelCenter();
+            MODEL.modelPosition(0, 0, 0, 0);
             break;
     }
 });

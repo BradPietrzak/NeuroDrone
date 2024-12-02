@@ -1,10 +1,14 @@
 import * as THREE from "three";
-import { STLLoader } from "three/addons/loaders/STLLoader.js";
+import { GLTFLoader } from "three/addons/loaders/GLTFLoader.js";
 
 const scene = new THREE.Scene();
 
 const camera = new THREE.PerspectiveCamera();
-camera.position.z = 5;
+
+// Adjust to face drone properly
+camera.position.x = -20;
+camera.rotation.y = -Math.PI / 2;
+const rotZ = 0.5;
 
 const renderer = new THREE.WebGLRenderer({alpha: true});
 renderer.setSize(300, 300);
@@ -13,30 +17,39 @@ document.body.prepend(renderer.domElement);
 const light = new THREE.AmbientLight(0xFFFFFF);
 scene.add(light);
 
-const loader = new STLLoader();
 let mesh;
-let center;
-loader.load('models/tello_v2.stl', function (geometry) {
-    const material = new THREE.MeshPhongMaterial({ color: 0x666666 });
-    mesh = new THREE.Mesh(geometry, material);
-    mesh.scale.x = 0.1;
-    mesh.scale.y = 0.1;
-    mesh.scale.z = 0.1;
-    mesh.position.z = -15;
-    mesh.rotation.x = 35;
-    center = mesh.position;
+
+
+const loader = new GLTFLoader();
+loader.load('models/dji_tello.glb', function (gltf) {
+    mesh = gltf.scene;
+    mesh.rotation.z = rotZ;
     scene.add(mesh);
-    function animate() {
-        requestAnimationFrame(animate);
-
-        renderer.render(scene, camera);
-    }
-
     animate();
 });
 
-export function modelCenter() {
-    mesh.position.x = center.x;
-    mesh.position.y = center.y;
-    mesh.position.z = center.z;
+function animate() {
+    requestAnimationFrame(animate);
+
+    renderer.render(scene, camera);
+}
+
+
+export function modelPosition(z, y, x, yaw) {
+
+    x *= -1;
+    // X rotation with backward/forward
+    if (z > 0) mesh.rotation.x = 0.3;
+    else if (z < 0) mesh.rotation.x = -0.3;
+    else mesh.rotation.x = 0;
+    
+    // Z rotation with left/right
+    if (x > 0) mesh.rotation.z = -0.3 + rotZ;
+    else if (x < 0) mesh.rotation.z = 0.3 + rotZ;
+    else mesh.rotation.z = rotZ;
+
+    mesh.position.x = x;
+    mesh.position.y = y;
+    mesh.position.z = z;
+    mesh.rotation.y = yaw;
 }
