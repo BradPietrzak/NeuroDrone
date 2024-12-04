@@ -67,12 +67,15 @@ document.addEventListener('keydown', (event) => {
             break;
         case 't':
             sendCommand('takeoff');
+            MODEL.takeoff();
             break;
         case 'l':
             sendCommand('land');
+            MODEL.land(false);
             break;
         case '`':
             sendCommand('emergency');
+            MODEL.land(true);
             break;
         case 'ArrowLeft':
             sendCommand('flip l');
