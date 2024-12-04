@@ -5,38 +5,34 @@ const deviceId = document.getElementById("deviceId");
 const email = document.getElementById("username");
 const password = document.getElementById("password");
 */
-const verifyEnvs = (email, password, deviceId) => {
-  const invalidEnv = (env) => {
-    return env === "" || env === 0;
-  };
-
+function processLogin(username, password, deviceId) {
   // Validate if the required environment variables are provided
-  if (invalidEnv(email) || invalidEnv(password) || invalidEnv(deviceId)) {
+  if (username == ""|| password == "" || deviceId == "") {
     console.error(
       "Please verify deviceId, email, and password are provided, quitting..."
     );
-    document.getElementById("error").innerHTML = "Invalid Login";
+    return false
+  }
+  else{
+    return true;
+  }
     
+  }
+async function main(email, password, neurosity) {
+try{
+  await neurosity
+    .login({
+      email: email,
+      password: password
+    });
+    console.log('Logged in successfully');
+    return true;
+  }
+  catch(error){
+      console.log(error);
+      return false;
   }
 };
 
-const neurosity = new Neurosity({
-    deviceId
-});
 
-const main = async () => {
-  await neurosity
-    .login({
-      email,
-      password
-    })
-    .catch((error) => {
-      console.log(error);
-      throw new Error(error);
-    });
-  console.log("Logged in");
-
- 
-};
-
-
+module.exports = {processLogin, main};
