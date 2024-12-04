@@ -26,7 +26,7 @@ let targetSpeed = 0, currSpeed = 0;
 let propellers;
 
 const loader = new GLTFLoader();
-loader.load('models/tello_new.glb', function (gltf) {
+loader.load('models/drone_WIP.glb', function (gltf) {
     model = gltf.scene;
     scene.add(model);
     camera.lookAt(model.position);
@@ -65,12 +65,12 @@ function animate() {
     model.rotation.z = THREE.MathUtils.lerp(model.rotation.z, targetRot.z, 0.1);
 
     // Adjust Propeller Speed
-    if (targetSpeed == 0 && currSpeed - targetSpeed < 0.01) currSpeed = targetSpeed;
-    else if (currSpeed > targetSpeed) currSpeed -= 0.01;
-    else if (currSpeed < targetSpeed) currSpeed += 0.01;
+    if (targetSpeed == 0 && currSpeed - targetSpeed < 0.001) currSpeed = targetSpeed;
+    else if (currSpeed > targetSpeed) currSpeed -= 0.001;
+    else if (currSpeed < targetSpeed) currSpeed += 0.001;
     
     if (mixer) {
-        mixer.update(0.01);  // Update by the time step (0.01 for smooth playback)
+        mixer.update(currSpeed);  // Update by the time step (0.01 for smooth playback)
     }
     // Rotate Propellers
     //propellers[0].rotation.y += currSpeed; // Working
@@ -84,7 +84,7 @@ function animate() {
 
 export function takeoff() {
     inMotion = true;
-    targetSpeed = 0.3;
+    targetSpeed = 0.05;
     modelPosition(0, 0, 0, 0);
 }
 export function land(emergency) {
