@@ -1,4 +1,4 @@
-import * as MODEL from "/js/main.js";
+import * as MODEL from "/js/3d.js";
 
 const socket = io();
 
