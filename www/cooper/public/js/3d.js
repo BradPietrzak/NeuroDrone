@@ -4,12 +4,12 @@ import { GLTFLoader } from "three/addons/loaders/GLTFLoader.js";
 const scene = new THREE.Scene();
 
 const camera = new THREE.PerspectiveCamera();
-camera.position.x = -20;
+camera.position.x = -23;
 camera.position.y = 7;
 
 const renderer = new THREE.WebGLRenderer({alpha: true});
 renderer.setSize(300, 300);
-document.body.prepend(renderer.domElement);
+document.getElementById('controls').append(renderer.domElement);
 
 const light = new THREE.AmbientLight(0xFFFFFF);
 scene.add(light);
@@ -34,35 +34,58 @@ loader.load('models/drone_WIP.glb', function (gltf) {
 
     mixer = new THREE.AnimationMixer(model);
 
+    // Initialize propellor animations
     gltf.animations.forEach((clip) => {
-        mixer.clipAction(clip).play();  // Play each animation (or choose a specific one)
+        mixer.clipAction(clip).play();
     });
-
-    propellers = [
-        model.getObjectByName("Object_10"), // 0, 0
-        model.getObjectByName("Object_6"),  // 0, 1
-        model.getObjectByName("Object_14"), // 1, 0
-        model.getObjectByName("Object_18")  // 1, 1
-    ];
-
-    for (let i = 0; i < 4; i++) {
-        console.log(propellers[i]);
-    }
-    // Get propellers into proper rotations
     
     animate();
 });
 
+let flipType = null;
+let startTime = null;
+let time = null;
+let flipDur = 0.5;
 
+let flipPosAdj = 2;
 
 function animate() {
-    requestAnimationFrame(animate);
-
-    // Smooth Movement
-    model.position.lerp(targetPos, 0.1);
-    model.rotation.x = THREE.MathUtils.lerp(model.rotation.x, targetRot.x, 0.1);
-    model.rotation.y = THREE.MathUtils.lerp(model.rotation.y, targetRot.y, 0.1);
-    model.rotation.z = THREE.MathUtils.lerp(model.rotation.z, targetRot.z, 0.1);
+    //Handle Flipping
+    if (startTime != null) {
+        time = performance.now();
+        const elapsed = (time - startTime) / 1000;
+        const flipRotation = (Math.PI * 2) - (Math.PI * 2 * (elapsed / flipDur)); // Complete a 360-degree flip
+        const posAdj = Math.sin(Math.PI * elapsed / flipDur) * flipPosAdj;
+        switch(flipType) {
+            case 'f':
+                model.rotation.z = flipRotation;
+                model.position.y = 2 * posAdj;
+                break;
+            case 'b':
+                model.rotation.z = -flipRotation;
+                model.position.y = 2 * posAdj;
+                break;
+            case 'l':
+                model.rotation.x = flipRotation;
+                model.position.z = -posAdj;
+                break;
+            case 'r':
+                model.rotation.x = -flipRotation;
+                model.position.z = posAdj;
+                break;
+            default:
+                break;
+        }
+        if (elapsed >= flipDur)
+            startTime = null;
+    }
+    else {
+        // Smooth Movement
+        model.position.lerp(targetPos, 0.1);
+        model.rotation.x = THREE.MathUtils.lerp(model.rotation.x, targetRot.x, 0.1);
+        model.rotation.y = THREE.MathUtils.lerp(model.rotation.y, targetRot.y, 0.1);
+        model.rotation.z = THREE.MathUtils.lerp(model.rotation.z, targetRot.z, 0.1);
+    }
 
     // Adjust Propeller Speed
     if (targetSpeed == 0 && currSpeed - targetSpeed < 0.001) currSpeed = targetSpeed;
@@ -70,15 +93,10 @@ function animate() {
     else if (currSpeed < targetSpeed) currSpeed += 0.001;
     
     if (mixer) {
-        mixer.update(currSpeed);  // Update by the time step (0.01 for smooth playback)
+        mixer.update(currSpeed);
     }
-    // Rotate Propellers
-    //propellers[0].rotation.y += currSpeed; // Working
-    //propellers[1].rotation.x += currSpeed;
-    //propellers[2].rotation.y += currSpeed;
-    //propellers[2].rotation.y += currSpeed;
-    //propellers[3].rotation.y += currSpeed; // Working
 
+    requestAnimationFrame(animate);
     renderer.render(scene, camera);
 }
 
@@ -94,6 +112,30 @@ export function land(emergency) {
     inMotion = false;
 }
 
+export function flipF() {
+    if (startTime === null && inMotion) {
+        startTime = performance.now();
+        flipType = 'f';
+    }
+}
+export function flipB() {
+    if (startTime === null && inMotion)  {
+        startTime = performance.now();
+        flipType = 'b';
+    }
+}
+export function flipL() {
+    if (startTime === null && inMotion)  {
+        startTime = performance.now();
+        flipType = 'l';
+    }
+}
+export function flipR() {
+    if (startTime === null && inMotion)  {
+        startTime = performance.now();
+        flipType = 'r';
+    }
+}
 
 export function modelPosition(z, y, x, yaw) {
     if (!inMotion) return;

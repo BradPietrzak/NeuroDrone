@@ -83,18 +83,22 @@ document.addEventListener('keydown', (event) => {
             break;
         case 'ArrowLeft':
             sendCommand('flip l');
+            MODEL.flipL();
             sleep();
             break;
         case 'ArrowRight':
             sendCommand('flip r');
+            MODEL.flipR();
             sleep();
             break;
         case 'f':
             sendCommand('flip f');
+            MODEL.flipF();
             sleep();
             break;
         case 'b':
             sendCommand('flip b');
+            MODEL.flipB();
             sleep();
             break;
     }
@@ -102,28 +106,13 @@ document.addEventListener('keydown', (event) => {
 
 document.addEventListener('keyup', (event) => {
     switch (event.key) {
-        // Switch case fall through
         case 'w':
-            //sendCommand('rc 0 0 0 0');
-            //break;
         case 's':
-            //sendCommand('rc 0 0 0 0');
-            //break;
         case 'a':
-            //sendCommand('rc 0 0 0 0');
-            //break;
         case 'd':
-            //sendCommand('rc 0 0 0 0');
-            //break;
         case 'ArrowUp':
-            //sendCommand('rc 0 0 0 0');
-            //break;
         case 'ArrowDown':
-            //sendCommand('rc 0 0 0 0');
-            //break;
         case 'q':
-            //sendCommand('rc 0 0 0 0');
-            //break;
         case 'e':
             sendCommand('rc 0 0 0 0');
             MODEL.modelPosition(0, 0, 0, 0);

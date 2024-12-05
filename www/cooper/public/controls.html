@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Neuro Drone</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <script type="importmap">
+        {
+          "imports": {
+            "three": "https://cdn.jsdelivr.net/npm/three@0.171.0/build/three.module.js",
+            "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.171.0/examples/jsm/"
+          }
+        }
+    </script>
+</head>
+<body class="test-col min-h-screen flex flex-col items-center justify-center">    
+    <nav class="bg-black w-full fixed top-0">
+        <div class="mx-auto px-2 sm:px-6 lg:px-8">
+            <div class="relative flex items-center justify-between h-20">
+                <div class="flex-1 flex items-center justify-center sm:items-stretch sm:justify-between">
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white px-6 py-4 text-lg rounded-md">Macro Control</a>
+                        <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white px-6 py-4 text-lg rounded-md">Train</a>
+                        <div class="flex text-center">
+                            <h1 class="text-6xl font-serif text-white">Neuro Drone</h1>
+                        </div>
+                        <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white px-6 py-4 text-lg rounded-md">Neurosity Control</a>
+                        <a href="/" class="text-gray-300 hover:bg-gray-700 hover:text-white px-6 py-4 text-lg rounded-md">Log Out</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <div class="top w-full">
+        <button id="back" class="absolute top-20 left-2 px-4 py-2 bg-black text-white rounded hover:bg-gray-800" onclick="location.href='/'">Home / Back</button>
+        <button id="connect" class="absolute top-20 right-2 px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600" onclick='connectButton()'>Connect</button>
+    </div>
+    
+    <div id="controls" class="flex w-30 mt-12 mr-80">
+        <div class="flex-1 grid grid-cols-3 gap-3">
+            <button class="px-4 py-2 bg-black text-white rounded hover:bg-gray-800" onclick="sendButtonCommand('ccw 90')">Turn Left (q)</button>
+            <button class="px-4 py-2 bg-black text-white rounded hover:bg-gray-800" onclick="sendButtonCommand('forward 50')">Forward (w)</button>
+            <button class="px-4 py-2 bg-black text-white rounded hover:bg-gray-800" onclick="sendButtonCommand('cw 90')">Turn Right (e)</button>
+            <button class="px-4 py-2 bg-black text-white rounded hover:bg-gray-800" onclick="sendButtonCommand('left 50')">Left (a)</button>
+            <div></div>
+            <button class="px-4 py-2 bg-black text-white rounded hover:bg-gray-800" onclick="sendButtonCommand('right 50')">Right (d)</button>
+            <div></div>
+            <button class="px-4 py-2 bg-black text-white rounded hover:bg-gray-800" onclick="sendButtonCommand('back 50')">Back (s)</button>
+        </div>
+    
+        <div class="flex-1 flex flex-col items-center space-y-4">
+            <div class="grid grid-cols-2 gap-4">
+                <button class="px-4 py-2 bg-black text-white rounded hover:bg-gray-800" onclick="document.dispatchEvent(new KeyboardEvent('keydown', {key: 'f'}))">Flip Forward (f)</button>
+                <button class="px-4 py-2 bg-black text-white rounded hover:bg-gray-800" onclick="document.dispatchEvent(new KeyboardEvent('keydown', {key: 'b'}))">Flip Backward (b)</button>
+                <button class="px-4 py-2 bg-black text-white rounded hover:bg-gray-800" onclick="document.dispatchEvent(new KeyboardEvent('keydown', {key: 'ArrowLeft'}))">Flip Left (←)</button>
+                <button class="px-4 py-2 bg-black text-white rounded hover:bg-gray-800" onclick="document.dispatchEvent(new KeyboardEvent('keydown', {key: 'ArrowRight'}))">Flip Right (→)</button>
+            </div>
+    
+            <div class="flex flex-col space-y-4"> 
+                <button class="w-30 px-4 py-2 bg-black text-white rounded hover:bg-gray-800" onclick="sendButtonCommand('up 50')">Up (↑)</button> 
+                <button class="w-30 px-4 py-2 bg-black text-white rounded hover:bg-gray-800" onclick="sendButtonCommand('down 50')">Down (↓)</button> 
+            </div>
+    
+            <div class="space-y-4 mt-4"> 
+                <button id="takeoff" class="w-36 px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600" onclick="document.dispatchEvent(new KeyboardEvent('keydown', {key: 't'}))">Take Off (t)</button> 
+                <button id="land" class="w-36 px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600" onclick="document.dispatchEvent(new KeyboardEvent('keydown', {key: 'l'}))">Land (l)</button> 
+            </div>
+        </div>
+    </div>
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+        const socket = io();
+
+        function sendButtonCommand(command) {
+            socket.emit('command', command);
+            console.log(`Sent command: ${command}`);
+        }
+
+        async function connectButton() {
+            const levelDiv = document.getElementById('connect');
+
+            try {
+                const diditconnect = await sendButtonCommand('command');
+                sendButtonCommand('streamon');
+                socket.emit('start-video');
+                levelDiv.style.backgroundColor = '#4caf50';  // Green for success
+            } catch (error) {
+                console.error('Error occurred while connecting:', error);
+                levelDiv.style.backgroundColor = '#f44336';  // Red for error
+            }
+        }
+    </script>
+    <script type="module" src="js/script.js"></script>
+</body>
+</html>
