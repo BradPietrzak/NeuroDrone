@@ -10,6 +10,8 @@ async function connect() {
 
     try {
         const diditconnect = await sendCommand('command');
+        sendCommand('streamon');
+        socket.emit('start-video');
         levelDiv.style.backgroundColor = '#4caf50';  // Green for success
     } catch (error) {
         console.error('Error occurred while connecting:', error);

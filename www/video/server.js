@@ -22,14 +22,8 @@ app.get("/video-stream", (req, res) => {
     .videoCodec("libx264")
     .outputOptions([
       "-movflags frag_keyframe+empty_moov",
-      "-fflags nobuffer",
-      "-flags low_delay",
-      "-max_delay 0",
-      "-tune zerolatency",
-      "-buffer_size 256k",
-      "-analyzeduration 500k",
-      "-crf 23",
-      "-preset ultrafast"
+      "-buffer_size 999k",
+      "-crf 23"
     ])
     .on("end", () => {
       console.log("Stream ended");
