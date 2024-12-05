@@ -39,15 +39,6 @@ try{
   }
 };
 
-async function connect() {
-    
-    try {
-        const diditconnect = await sendCommand('command'); 
-    } catch (error) {
-        console.error('Error occurred while connecting:', error);
-    }
-}
-
 function sleep() {
     ms = 3000
     return new Promise(resolve => setTimeout(resolve, ms));
@@ -68,4 +59,4 @@ function sendCommand(command) {
 
 
 
-module.exports = {processLogin, main, sleep, connect, sendCommand};
+module.exports = {processLogin, main, sleep, sendCommand};

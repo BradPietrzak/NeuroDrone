@@ -43,6 +43,9 @@ router.post('/', async (req, res) => {
             case '`': 
                 sendCommand('emergency'); 
                 break;
+            case 'c': 
+                sendCommand('command'); 
+                break;
             case 'ArrowLeft': 
                 sendCommand('flip l'); 
                 sleep(); 

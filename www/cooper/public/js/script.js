@@ -79,7 +79,7 @@ document.addEventListener('keydown', (event) => {
             MODEL.land(true);
             break;
         case 'c':
-            connect();
+            sendCommand('command');
             break;
         case 'ArrowLeft':
             sendCommand('flip l');
