@@ -25,9 +25,11 @@
     "punycode": "^2.3.1",
     "socket.io": "^4.8.1",
     "stream-cache": "^0.0.2",
-    "ws": "^8.18.0"
+    "ws": "^8.18.0",
+    "three": "^0.171.0"
   },
   "devDependencies": {
-    "nodemon": "^3.1.7"
+    "nodemon": "^3.1.7",
+    "vite": "^6.0.1"
   }
 }

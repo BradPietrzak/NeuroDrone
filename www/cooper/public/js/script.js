@@ -1,3 +1,5 @@
+import * as MODEL from "/js/3d.js";
+
 const socket = io();
 
 function sendCommand(command) {
@@ -5,7 +7,7 @@ function sendCommand(command) {
     console.log(`Sent command: ${command}`);
 }
 
-async function connect() {
+export async function connect() {
     const levelDiv = document.getElementById('connect');
 
     try {
@@ -20,7 +22,7 @@ async function connect() {
 }
 
 function sleep() {
-    ms = 3000
+    let ms = 3000
     return new Promise(resolve => setTimeout(resolve, ms));
 }
 
@@ -35,36 +37,47 @@ document.addEventListener('keydown', (event) => {
     switch (event.key) {
         case 'w':
             sendCommand('rc 0 50 0 0');
+            MODEL.modelPosition(0, 0, -3, 0);
             break;
         case 's':
             sendCommand('rc 0 -50 0 0');
+            MODEL.modelPosition(0, 0, 3, 0);
             break;
         case 'a':
             sendCommand('rc -50 0 0 0');
+            MODEL.modelPosition(-3, 0, 0, 0);
             break;
         case 'd':
             sendCommand('rc 50 0 0 0');
+            MODEL.modelPosition(3, 0, 0, 0);
             break;
         case 'ArrowUp':
             sendCommand('rc 0 0 50 0');
+            MODEL.modelPosition(0, 3, 0, 0);
             break;
         case 'ArrowDown':
             sendCommand('rc 0 0 -50 0');
+            MODEL.modelPosition(0, -3, 0, 0);
             break;
         case 'q':
             sendCommand('rc 0 0 0 -50');
+            MODEL.modelPosition(0, 0, 0, 0.5);
             break;
         case 'e':
             sendCommand('rc 0 0 0 50');
+            MODEL.modelPosition(0, 0, 0, -0.5);
             break;
         case 't':
             sendCommand('takeoff');
+            MODEL.takeoff();
             break;
         case 'l':
             sendCommand('land');
+            MODEL.land(false);
             break;
         case '`':
             sendCommand('emergency');
+            MODEL.land(true);
             break;
         case 'ArrowLeft':
             sendCommand('flip l');
@@ -87,29 +100,31 @@ document.addEventListener('keydown', (event) => {
 
 document.addEventListener('keyup', (event) => {
     switch (event.key) {
+        // Switch case fall through
         case 'w':
-            sendCommand('rc 0 0 0 0');
-            break;
+            //sendCommand('rc 0 0 0 0');
+            //break;
         case 's':
-            sendCommand('rc 0 0 0 0');
-            break;
+            //sendCommand('rc 0 0 0 0');
+            //break;
         case 'a':
-            sendCommand('rc 0 0 0 0');
-            break;
+            //sendCommand('rc 0 0 0 0');
+            //break;
         case 'd':
-            sendCommand('rc 0 0 0 0');
-            break;
+            //sendCommand('rc 0 0 0 0');
+            //break;
         case 'ArrowUp':
-            sendCommand('rc 0 0 0 0');
-            break;
+            //sendCommand('rc 0 0 0 0');
+            //break;
         case 'ArrowDown':
-            sendCommand('rc 0 0 0 0');
-            break;
+            //sendCommand('rc 0 0 0 0');
+            //break;
         case 'q':
-            sendCommand('rc 0 0 0 0');
-            break;
+            //sendCommand('rc 0 0 0 0');
+            //break;
         case 'e':
             sendCommand('rc 0 0 0 0');
+            MODEL.modelPosition(0, 0, 0, 0);
             break;
     }
 });

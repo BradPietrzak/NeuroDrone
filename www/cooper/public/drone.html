@@ -6,9 +6,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tello Drone Control</title>
     <link rel="stylesheet" href="css/drone_style.css">
+    <script type="importmap">
+        {
+          "imports": {
+            "three": "https://cdn.jsdelivr.net/npm/three@0.171.0/build/three.module.js",
+            "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.171.0/examples/jsm/"
+          }
+        }
+    </script>
 </head>
 
 <body>
+    
     <button id="back" onclick="location.href='/'">Home / Back</button>
     <button id="connect" onclick='connect()'>Connect</button>
     <div class="container">
@@ -36,7 +45,7 @@
     <button id="land" onclick="sendCommand('land')">Land (l)</button>
 
     <script src="/socket.io/socket.io.js"></script>
-    <script src="js/script.js"></script>
+    <script type="module" src="js/script.js"></script>
 </body>
 
 </html>

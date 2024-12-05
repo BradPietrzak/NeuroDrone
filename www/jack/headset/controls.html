@@ -6,8 +6,18 @@
     <title>Neuro Drone</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
     <link rel="stylesheet" href="css/style.css">
+    <script type="importmap">
+        {
+          "imports": {
+            "three": "https://cdn.jsdelivr.net/npm/three@0.171.0/build/three.module.js",
+            "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.171.0/examples/jsm/"
+          }
+        }
+    </script>
 </head>
 <body class="test-col min-h-screen flex flex-col items-center justify-center">
+
+    <script type="module" src="./three_tests/main.js"></script>
     
     <nav class="bg-black w-full fixed top-0">
         <div class="mx-auto px-2 sm:px-6 lg:px-8">
