@@ -7,7 +7,7 @@ function sendCommand(command) {
 
 async function connect() {
     const levelDiv = document.getElementById('connect');
-
+    
     try {
         const diditconnect = await sendCommand('command');
         levelDiv.style.backgroundColor = '#4caf50';  // Green for success

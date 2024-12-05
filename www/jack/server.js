@@ -19,20 +19,15 @@ app.get('/', (req, res) => {
 
 //establish routes specify login route
 const loginRouter = require('./routes/login')
-
+const macroRouter = require('./routes/macros');
 
 app.use('/login', loginRouter);
-
+app.use('/macros', macroRouter);
 
 app.get('/login-error', (req, res) => { 
     res.sendFile(path.join(__dirname, './headset/error.html'));
  });
 
- app.get('../cooper/public/js/script.js', (req, res) => { 
-    res.type('application/javascript'); 
-    res.sendFile(path.join(__dirname, 'public', 'js', 'script.js')); 
-});
-
-server.listen(port, () => {
-    console.log(`Listening on port ${port}`);
+ server.listen(port, () => {
+  console.log(`Listening on port ${port}`);
 });

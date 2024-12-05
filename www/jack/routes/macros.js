@@ -2,9 +2,10 @@ const express = require('express');
 const path = require('path');
 const bodyParser = require('body-parser');
 const router = express.Router();
-const {sleep, sendCommand, connect} = require('../index');
+const {sleep, sendCommand} = require('../index');
 
-router.post('/macros', async (req, res) => {
+
+router.post('/', async (req, res) => {
     const {type, key} = req.body;
 
     if (type === 'keydown') {
@@ -80,14 +81,6 @@ router.post('/macros', async (req, res) => {
     res.status(200).send();
 });
 
-router.get('/connect', async (req, res) => {
-    try { 
-        await connect(); res.status(200).send('Connected'); 
-    } 
-    catch (error) { 
-        console.error('Error occurred while connecting:', error); 
-        res.status(500).send('Connection failed'); 
-    }
-});
+
 
 module.exports = router;

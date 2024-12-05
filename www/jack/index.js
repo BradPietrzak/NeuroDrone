@@ -1,4 +1,9 @@
 const { Neurosity } = require("@neurosity/sdk");
+const dgram = require("dgram");
+const TELLO_PORT = 8889;
+const TELLO_IP = "192.168.10.1";
+const drone = dgram.createSocket("udp4");
+drone.bind(TELLO_PORT);
 
 /*
 const deviceId = document.getElementById("deviceId");
@@ -34,5 +39,33 @@ try{
   }
 };
 
+async function connect() {
+    
+    try {
+        const diditconnect = await sendCommand('command'); 
+    } catch (error) {
+        console.error('Error occurred while connecting:', error);
+    }
+}
 
-module.exports = {processLogin, main};
+function sleep() {
+    ms = 3000
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+function sendCommand(command) {
+  drone.send(command, TELLO_PORT, TELLO_IP, (err) => {
+    if (err) console.error("Error sending command:", err);
+    else console.log("Command sent:", command);
+  });
+}
+// rc a b c d
+// a: left/right
+// b: forward/backward
+// c: up/down
+// d: yaw
+// space: emergency stop
+
+
+
+module.exports = {processLogin, main, sleep, connect, sendCommand};

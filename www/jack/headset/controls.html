@@ -28,7 +28,7 @@
     </nav>
     <div class="top w-full">
         <button id="back" class="absolute top-20 left-2 px-4 py-2 bg-black text-white rounded hover:bg-gray-800" onclick="location.href='/macros'">Home / Back</button>
-        <button id="connect" class="absolute top-20 right-2 px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600" onclick="location.href='/macros/connect'">Connect</button>
+        <button id="connect" class="absolute top-20 right-2 px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600" onclick=connect()>Connect</button>
     </div>
     
     <div class="flex w-30 mt-12 mr-80">
@@ -64,8 +64,8 @@
     </div>
     
     <script>
-        function sendCommand(type, key) { 
-            fetch('http://localhost:3000/macros', { 
+        function sendCommand(type, key) {
+            fetch('/macros', { 
                 method: 'POST', 
                 headers: { 
                     'Content-Type': 'application/json' 
@@ -91,6 +91,15 @@
         document.addEventListener('keyup', (event) => { 
             sendCommand('keyup', event.key); 
         });
+        async function connect() {
+            try {
+                const diditconnect = await sendCommand('command'); 
+            } catch (error) {
+                console.error('Error occurred while connecting:', error);
+            }
+        }
+        
+        
     </script>
 
 </body>
