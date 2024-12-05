@@ -26,13 +26,12 @@ function sleep() {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
 
-
 // rc a b c d
 // a: left/right
 // b: forward/backward
 // c: up/down
 // d: yaw
-// space: emergency stop
+// ~: emergency stop
 document.addEventListener('keydown', (event) => {
     switch (event.key) {
         case 'w':
@@ -78,6 +77,9 @@ document.addEventListener('keydown', (event) => {
         case '`':
             sendCommand('emergency');
             MODEL.land(true);
+            break;
+        case 'c':
+            connect();
             break;
         case 'ArrowLeft':
             sendCommand('flip l');
