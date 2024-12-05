@@ -6,37 +6,68 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tello Drone Control</title>
     <link rel="stylesheet" href="css/drone_style.css">
+    <script type="importmap">
+        {
+          "imports": {
+            "three": "https://cdn.jsdelivr.net/npm/three@0.171.0/build/three.module.js",
+            "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.171.0/examples/jsm/"
+          }
+        }
+    </script>
 </head>
 
 <body>
+
     <button id="back" onclick="location.href='/'">Home / Back</button>
-    <button id="connect" onclick='connect()'>Connect</button>
+    <button id="connect" onclick='connectButton()'>Connect</button>
     <div class="container">
-        <button class="left" onclick="sendCommand('left 50')">Left (a)</button>
-        <button class="right" onclick="sendCommand('right 50')">Right (d)</button>
-        <button class="out-left" onclick="sendCommand('ccw 90')">Turn Left (q)</button>
-        <button class="out-right" onclick="sendCommand('cw 90')">Turn Right (e)</button>
+        <button class="left" onclick="sendButtonCommand('left 50')">Left (a)</button>
+        <button class="right" onclick="sendButtonCommand('right 50')">Right (d)</button>
+        <button class="out-left" onclick="sendButtonCommand('ccw 90')">Turn Left (q)</button>
+        <button class="out-right" onclick="sendButtonCommand('cw 90')">Turn Right (e)</button>
 
         <div class="flip">
-            <button class="flipf" onclick="sendCommand('flip f')">Flip forward (f) </button>
-            <button class="flipb" onclick="sendCommand('flip b')">Flip backwards (b)</button>
-            <button class="flipl" onclick="sendCommand('flip l')">Flip Left (←)</button>
-            <button class="flipr" onclick="sendCommand('flip r')">Flip Right (→)</button>
+            <button class="flipf" onclick="sendButtonCommand('flip f')">Flip forward (f) </button>
+            <button class="flipb" onclick="sendButtonCommand('flip b')">Flip backwards (b)</button>
+            <button class="flipl" onclick="sendButtonCommand('flip l')">Flip Left (←)</button>
+            <button class="flipr" onclick="sendButtonCommand('flip r')">Flip Right (→)</button>
         </div>
 
         <div class="center">
-            <button class="up" onclick="sendCommand('up 50')">Up (↑)</button>
-            <button class="forward" onclick="sendCommand('forward 50')">Forward (w)</button>
-            <button class="back" onclick="sendCommand('back 50')">Back (s)</button>
-            <button class="down" onclick="sendCommand('down 50')">Down (↓)</button>
+            <button class="up" onclick="sendButtonCommand('up 50')">Up (↑)</button>
+            <button class="forward" onclick="sendButtonCommand('forward 50')">Forward (w)</button>
+            <button class="back" onclick="sendButtonCommand('back 50')">Back (s)</button>
+            <button class="down" onclick="sendButtonCommand('down 50')">Down (↓)</button>
         </div>
     </div>
 
-    <button id="takeoff" onclick="sendCommand('takeoff')">Take Off (t)</button>
-    <button id="land" onclick="sendCommand('land')">Land (l)</button>
+    <button id="takeoff" onclick="sendButtonCommand('takeoff')">Take Off (t)</button>
+    <button id="land" onclick="sendButtonCommand('land')">Land (l)</button>
 
     <script src="/socket.io/socket.io.js"></script>
-    <script src="js/script.js"></script>
+    <script>
+        const socket = io();
+
+        function sendButtonCommand(command) {
+            socket.emit('command', command);
+            console.log(`Sent command: ${command}`);
+        }
+
+        async function connectButton() {
+            const levelDiv = document.getElementById('connect');
+
+            try {
+                const diditconnect = await sendButtonCommand('command');
+                sendButtonCommand('streamon');
+                socket.emit('start-video');
+                levelDiv.style.backgroundColor = '#4caf50';  // Green for success
+            } catch (error) {
+                console.error('Error occurred while connecting:', error);
+                levelDiv.style.backgroundColor = '#f44336';  // Red for error
+            }
+        }
+    </script>
+    <script type="module" src="js/script.js"></script>
 </body>
 
 </html>
