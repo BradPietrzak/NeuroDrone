@@ -23,8 +23,6 @@ let mixer;
 let inMotion = false;
 let targetSpeed = 0, currSpeed = 0;
 
-let propellers;
-
 const loader = new GLTFLoader();
 loader.load('models/drone_WIP.glb', function (gltf) {
     model = gltf.scene;
@@ -100,44 +98,44 @@ function animate() {
     renderer.render(scene, camera);
 }
 
-export function takeoff() {
+function takeoff() {
     inMotion = true;
     targetSpeed = 0.05;
     modelPosition(0, 0, 0, 0);
 }
-export function land(emergency) {
+function land(emergency) {
     targetSpeed = 0;
     if (emergency) currSpeed = 0;
     modelPosition(0, -5, 0, 0);
     inMotion = false;
 }
 
-export function flipF() {
+function flipF() {
     if (startTime === null && inMotion) {
         startTime = performance.now();
         flipType = 'f';
     }
 }
-export function flipB() {
+function flipB() {
     if (startTime === null && inMotion)  {
         startTime = performance.now();
         flipType = 'b';
     }
 }
-export function flipL() {
+function flipL() {
     if (startTime === null && inMotion)  {
         startTime = performance.now();
         flipType = 'l';
     }
 }
-export function flipR() {
+function flipR() {
     if (startTime === null && inMotion)  {
         startTime = performance.now();
         flipType = 'r';
     }
 }
 
-export function modelPosition(z, y, x, yaw) {
+function modelPosition(z, y, x, yaw) {
     if (!inMotion) return;
     x *= -1;
     // X rotation with backward/forward
@@ -155,3 +153,5 @@ export function modelPosition(z, y, x, yaw) {
     targetPos.z = z;
     targetRot.y = yaw;
 }
+
+//module.exports = {takeoff, land, flipL, flipR, flipB, flipF, modelPosition};
