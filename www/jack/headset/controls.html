@@ -17,7 +17,7 @@
 </head>
 <body class="test-col min-h-screen flex flex-col items-center justify-center">
 
-    <script type="module" src="./three_tests/main.js"></script>
+    <script type="module" src="3d.js"></script>
     
     <nav class="bg-black w-full fixed top-0">
         <div class="mx-auto px-2 sm:px-6 lg:px-8">
@@ -41,7 +41,7 @@
         <button id="connect" class="absolute top-20 right-2 px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600" onclick="sendCommand('keydown', 'c')" >Connect</button>
     </div>
     
-    <div class="flex w-30 mt-12 mr-80">
+    <div id="controls" class="flex w-30 mt-12 mr-80">
         <div class="flex-1 grid grid-cols-3 gap-3">
             <button class="px-4 py-2 bg-black text-white rounded hover:bg-gray-800" onclick="sendCommand('keydown', 'q')">Turn Left (q)</button>
             <button class="px-4 py-2 bg-black text-white rounded hover:bg-gray-800" onclick="sendCommand('keydown', 'w')">Forward (w)</button>
@@ -72,7 +72,6 @@
             </div>
         </div>
     </div>
-    
     <script>
         function sendCommand(type, key) {
             fetch('/macros', { 
@@ -111,6 +110,5 @@
         
         
     </script>
-
 </body>
 </html>
