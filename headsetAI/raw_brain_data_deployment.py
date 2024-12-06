@@ -1,3 +1,5 @@
+#this is the live deployment of the model with the brain data getting fed into it
+
 from neurosity import NeurositySDK
 from dotenv import load_dotenv
 import os
