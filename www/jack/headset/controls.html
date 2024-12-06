@@ -43,6 +43,7 @@
     
     <div id="controls" class="flex w-30 mt-12 mr-80">
         <div class="flex-1 grid grid-cols-3 gap-3">
+<<<<<<< Updated upstream
             <button class="px-4 py-2 bg-black text-white rounded hover:bg-gray-800" onmousedown="sendCommand('keydown', 'q')" onmouseup="sendCommand('keyup', 'q')">Turn Left (q)</button>
             <button class="px-4 py-2 bg-black text-white rounded hover:bg-gray-800" onmousedown="sendCommand('keydown', 'w')" onmouseup="sendCommand('keyup', 'w')">Forward (w)</button>
             <button class="px-4 py-2 bg-black text-white rounded hover:bg-gray-800" onmousedown="sendCommand('keydown', 'e')" onmouseup="sendCommand('keyup', 'e')">Turn Right (e)</button>
@@ -51,10 +52,21 @@
             <button class="px-4 py-2 bg-black text-white rounded hover:bg-gray-800" onmousedown="sendCommand('keydown', 'd')" onmouseup="sendCommand('keyup', 'd')">Right (d)</button>
             <div></div>
             <button class="px-4 py-2 bg-black text-white rounded hover:bg-gray-800" onmousedown="sendCommand('keydown', 's')" onmouseup="sendCommand('keyup', 's')">Back (s)</button>
+=======
+            <button class="px-4 py-2 bg-black text-white rounded hover:bg-gray-800" onclick="sendCommand('keydown', 'q');  MODEL.modelPosition(0, 0, 0, 0.5);">Turn Left (q)</button>
+            <button class="px-4 py-2 bg-black text-white rounded hover:bg-gray-800" onclick="sendCommand('keydown', 'w'); MODEL.modelPosition(0, 0, -3, 0);">Forward (w)</button>
+            <button class="px-4 py-2 bg-black text-white rounded hover:bg-gray-800" onclick="sendCommand('keydown', 'e');  MODEL.modelPosition(0, 0, 0, -0.5);">Turn Right (e)</button>
+            <button class="px-4 py-2 bg-black text-white rounded hover:bg-gray-800" onclick="sendCommand('keydown', 'a'); MODEL.modelPosition(-3, 0, 0, 0);">Left (a)</button>
+            <div></div>
+            <button class="px-4 py-2 bg-black text-white rounded hover:bg-gray-800" onclick="sendCommand('keydown', 'd');  MODEL.modelPosition(3, 0, 0, 0);">Right (d)</button>
+            <div></div>
+            <button class="px-4 py-2 bg-black text-white rounded hover:bg-gray-800" onclick="sendCommand('keydown', 's');MODEL.modelPosition(0, 0, 3, 0);">Back (s)</button>
+>>>>>>> Stashed changes
         </div>
     
         <div class="flex-1 flex flex-col items-center space-y-4">
             <div class="grid grid-cols-2 gap-4">
+<<<<<<< Updated upstream
                 <button class="px-4 py-2 bg-black text-white rounded hover:bg-gray-800" onmousedown="sendCommand('keydown', 'f')" onmouseup="sendCommand('keyup', 'f')">Flip Forward (f)</button>
                 <button class="px-4 py-2 bg-black text-white rounded hover:bg-gray-800" onmousedown="sendCommand('keydown', 'b')" onmouseup="sendCommand('keyup', 'b')">Flip Backward (b)</button>
                 <button class="px-4 py-2 bg-black text-white rounded hover:bg-gray-800" onmousedown="sendCommand('keydown', 'ArrowLeft')" onmouseup="sendCommand('keyup', 'ArrowLeft')">Flip Left (←)</button>
@@ -69,6 +81,22 @@
             <div class="space-y-4 mt-4"> 
                 <button id="takeoff" class="w-36 px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600" onmousedown="sendCommand('keydown', 't')" onmouseup="sendCommand('keyup', 't')">Take Off (t)</button> 
                 <button id="land" class="w-36 px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600" onmousedown="sendCommand('keydown', 'l')" onmouseup="sendCommand('keyup', 'l')">Land (l)</button> 
+=======
+                <button class="px-4 py-2 bg-black text-white rounded hover:bg-gray-800" onclick="sendCommand('keydown', 'f');  MODEL.flipF();">Flip Forward (f)</button>
+                <button class="px-4 py-2 bg-black text-white rounded hover:bg-gray-800" onclick="sendCommand('keydown', 'b'); MODEL.flipB();">Flip Backward (b)</button>
+                <button class="px-4 py-2 bg-black text-white rounded hover:bg-gray-800" onclick="sendCommand('keydown', 'ArrowLeft');  MODEL.flipL();">Flip Left (←)</button>
+                <button class="px-4 py-2 bg-black text-white rounded hover:bg-gray-800" onclick="sendCommand('keydown', 'ArrowRight');  MODEL.flipR();">Flip Right (→)</button>
+            </div>
+    
+            <div class="flex flex-col space-y-4"> 
+                <button class="w-30 px-4 py-2 bg-black text-white rounded hover:bg-gray-800" onclick="sendCommand('keydown', 'ArrowUp'); MODEL.modelPosition(0, 3, 0, 0);">Up (↑)</button> 
+                <button class="w-30 px-4 py-2 bg-black text-white rounded hover:bg-gray-800" onclick="sendCommand('keydown', 'ArrowDown');  MODEL.modelPosition(0, -3, 0, 0);">Down (↓)</button> 
+            </div>
+    
+            <div class="space-y-4 mt-4"> 
+                <button id="takeoff" class="w-36 px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600" onclick="sendCommand('keydown', 't'); MODEL.takeoff();">Take Off (t)</button> 
+                <button id="land" class="w-36 px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600" onclick="sendCommand('keydown', 'l'); MODEL.land(false);">Land (l)</button> 
+>>>>>>> Stashed changes
             </div>
         </div>
     </div>
@@ -98,6 +126,7 @@
         }); 
 
         document.addEventListener('keyup', (event) => { 
+            MODEL.modelPosition(0, 0, 0, 0);
             sendCommand('keyup', event.key); 
         });
         function connect() {
@@ -107,6 +136,169 @@
                 console.error('Error occurred while connecting:', error);
             }
         }
+<<<<<<< Updated upstream
+=======
+import * as THREE from 'three'
+import { GLTFLoader } from "three/addons/loaders/GLTFLoader.js";
+
+
+const scene = new THREE.Scene();
+
+const camera = new THREE.PerspectiveCamera();
+camera.position.x = -23;
+camera.position.y = 7;
+
+const renderer = new THREE.WebGLRenderer({alpha: true});
+renderer.setSize(300, 300);
+document.getElementById('controls').append(renderer.domElement);
+
+const light = new THREE.AmbientLight(0xFFFFFF);
+scene.add(light);
+
+let model;
+let targetPos = new THREE.Vector3(0, -5, 0);
+let targetRot = new THREE.Euler(0, 0, 0);
+
+let mixer;
+
+let inMotion = false;
+let targetSpeed = 0, currSpeed = 0;
+
+let propellers;
+
+const loader = new GLTFLoader();
+loader.load('models/drone_WIP.glb', function (gltf) {
+    model = gltf.scene;
+    scene.add(model);
+    camera.lookAt(model.position);
+    model.position.y = -5;
+
+    mixer = new THREE.AnimationMixer(model);
+
+    // Initialize propellor animations
+    gltf.animations.forEach((clip) => {
+        mixer.clipAction(clip).play();
+    });
+    
+    animate();
+});
+
+let flipType = null;
+let startTime = null;
+let time = null;
+let flipDur = 0.5;
+
+let flipPosAdj = 2;
+
+function animate() {
+    //Handle Flipping
+    if (startTime != null) {
+        time = performance.now();
+        const elapsed = (time - startTime) / 1000;
+        const flipRotation = (Math.PI * 2) - (Math.PI * 2 * (elapsed / flipDur)); // Complete a 360-degree flip
+        const posAdj = Math.sin(Math.PI * elapsed / flipDur) * flipPosAdj;
+        switch(flipType) {
+            case 'f':
+                model.rotation.z = flipRotation;
+                model.position.y = 2 * posAdj;
+                break;
+            case 'b':
+                model.rotation.z = -flipRotation;
+                model.position.y = 2 * posAdj;
+                break;
+            case 'l':
+                model.rotation.x = flipRotation;
+                model.position.z = -posAdj;
+                break;
+            case 'r':
+                model.rotation.x = -flipRotation;
+                model.position.z = posAdj;
+                break;
+            default:
+                break;
+        }
+        if (elapsed >= flipDur)
+            startTime = null;
+    }
+    else {
+        // Smooth Movement
+        model.position.lerp(targetPos, 0.1);
+        model.rotation.x = THREE.MathUtils.lerp(model.rotation.x, targetRot.x, 0.1);
+        model.rotation.y = THREE.MathUtils.lerp(model.rotation.y, targetRot.y, 0.1);
+        model.rotation.z = THREE.MathUtils.lerp(model.rotation.z, targetRot.z, 0.1);
+    }
+
+    // Adjust Propeller Speed
+    if (targetSpeed == 0 && currSpeed - targetSpeed < 0.001) currSpeed = targetSpeed;
+    else if (currSpeed > targetSpeed) currSpeed -= 0.001;
+    else if (currSpeed < targetSpeed) currSpeed += 0.001;
+    
+    if (mixer) {
+        mixer.update(currSpeed);
+    }
+
+    requestAnimationFrame(animate);
+    renderer.render(scene, camera);
+}
+
+function takeoff() {
+    inMotion = true;
+    targetSpeed = 0.05;
+    modelPosition(0, 0, 0, 0);
+}
+function land(emergency) {
+    targetSpeed = 0;
+    if (emergency) currSpeed = 0;
+    modelPosition(0, -5, 0, 0);
+    inMotion = false;
+}
+
+function flipF() {
+    if (startTime === null && inMotion) {
+        startTime = performance.now();
+        flipType = 'f';
+    }
+}
+function flipB() {
+    if (startTime === null && inMotion)  {
+        startTime = performance.now();
+        flipType = 'b';
+    }
+}
+function flipL() {
+    if (startTime === null && inMotion)  {
+        startTime = performance.now();
+        flipType = 'l';
+    }
+}
+function flipR() {
+    if (startTime === null && inMotion)  {
+        startTime = performance.now();
+        flipType = 'r';
+    }
+}
+
+ function modelPosition(z, y, x, yaw) {
+    if (!inMotion) return;
+    x *= -1;
+    // X rotation with backward/forward
+    if (z > 0) targetRot.x = 0.3;
+    else if (z < 0) targetRot.x = -0.3;
+    else targetRot.x = 0;
+    
+    // Z rotation with left/right
+    if (x > 0) targetRot.z = -0.3;
+    else if (x < 0) targetRot.z = 0.3;
+    else targetRot.z = 0;
+
+    targetPos.x = x;
+    targetPos.y = y;
+    targetPos.z = z;
+    targetRot.y = yaw;
+}
+
+        
+>>>>>>> Stashed changes
     </script>
 </body>
 </html>

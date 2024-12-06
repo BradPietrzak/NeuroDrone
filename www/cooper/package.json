@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "A Node.js application to control a drone using Express and Socket.IO.",
   "main": "server.js",
+  "type": "module",
   "scripts": {
     "start": "node server.js"
   },
