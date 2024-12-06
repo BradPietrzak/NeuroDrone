@@ -40,27 +40,27 @@
     
     <div id="controls" class="flex w-30 mt-12 mr-80">
         <div class="flex-1 grid grid-cols-3 gap-3">
-            <button class="px-4 py-2 bg-black text-white rounded hover:bg-gray-800" onclick="sendButtonCommand('ccw 90')">Turn Left (q)</button>
-            <button class="px-4 py-2 bg-black text-white rounded hover:bg-gray-800" onclick="sendButtonCommand('forward 50')">Forward (w)</button>
-            <button class="px-4 py-2 bg-black text-white rounded hover:bg-gray-800" onclick="sendButtonCommand('cw 90')">Turn Right (e)</button>
-            <button class="px-4 py-2 bg-black text-white rounded hover:bg-gray-800" onclick="sendButtonCommand('left 50')">Left (a)</button>
+            <button class="px-4 py-2 bg-black text-white rounded hover:bg-gray-800" onmousedown="document.dispatchEvent(new KeyboardEvent('keydown', {key: 'q'}))" onmouseup="document.dispatchEvent(new KeyboardEvent('keyup', {key: 'q'}))">Turn Left (q)</button>
+            <button class="px-4 py-2 bg-black text-white rounded hover:bg-gray-800" onmousedown="document.dispatchEvent(new KeyboardEvent('keydown', {key: 'w'}))" onmouseup="document.dispatchEvent(new KeyboardEvent('keyup', {key: 'w'}))">Forward (w)</button>
+            <button class="px-4 py-2 bg-black text-white rounded hover:bg-gray-800" onmousedown="document.dispatchEvent(new KeyboardEvent('keydown', {key: 'e'}))" onmouseup="document.dispatchEvent(new KeyboardEvent('keyup', {key: 'e'}))">Turn Right (e)</button>
+            <button class="px-4 py-2 bg-black text-white rounded hover:bg-gray-800" onmousedown="document.dispatchEvent(new KeyboardEvent('keydown', {key: 'a'}))" onmouseup="document.dispatchEvent(new KeyboardEvent('keyup', {key: 'a'}))">Left (a)</button>
             <div></div>
-            <button class="px-4 py-2 bg-black text-white rounded hover:bg-gray-800" onclick="sendButtonCommand('right 50')">Right (d)</button>
+            <button class="px-4 py-2 bg-black text-white rounded hover:bg-gray-800" onmousedown="document.dispatchEvent(new KeyboardEvent('keydown', {key: 'd'}))" onmouseup="document.dispatchEvent(new KeyboardEvent('keyup', {key: 'd'}))">Right (d)</button>
             <div></div>
-            <button class="px-4 py-2 bg-black text-white rounded hover:bg-gray-800" onclick="sendButtonCommand('back 50')">Back (s)</button>
+            <button class="px-4 py-2 bg-black text-white rounded hover:bg-gray-800" onmousedown="document.dispatchEvent(new KeyboardEvent('keydown', {key: 's'}))" onmouseup="document.dispatchEvent(new KeyboardEvent('keyup', {key: 's'}))">Back (s)</button>
         </div>
     
         <div class="flex-1 flex flex-col items-center space-y-4">
             <div class="grid grid-cols-2 gap-4">
-                <button class="px-4 py-2 bg-black text-white rounded hover:bg-gray-800" onclick="document.dispatchEvent(new KeyboardEvent('keydown', {key: 'f'}))">Flip Forward (f)</button>
-                <button class="px-4 py-2 bg-black text-white rounded hover:bg-gray-800" onclick="document.dispatchEvent(new KeyboardEvent('keydown', {key: 'b'}))">Flip Backward (b)</button>
-                <button class="px-4 py-2 bg-black text-white rounded hover:bg-gray-800" onclick="document.dispatchEvent(new KeyboardEvent('keydown', {key: 'ArrowLeft'}))">Flip Left (←)</button>
-                <button class="px-4 py-2 bg-black text-white rounded hover:bg-gray-800" onclick="document.dispatchEvent(new KeyboardEvent('keydown', {key: 'ArrowRight'}))">Flip Right (→)</button>
+                <button class="px-4 py-2 bg-black text-white rounded hover:bg-gray-800" onclick="document.dispatchEvent(new KeyboardEvent('keydown', {key: 'f'}))" onmouseup="document.dispatchEvent(new KeyboardEvent('keyup', {key: 'f'}))">Flip Forward (f)</button>
+                <button class="px-4 py-2 bg-black text-white rounded hover:bg-gray-800" onclick="document.dispatchEvent(new KeyboardEvent('keydown', {key: 'b'}))" onmouseup="document.dispatchEvent(new KeyboardEvent('keyup', {key: 'b'}))">Flip Backward (b)</button>
+                <button class="px-4 py-2 bg-black text-white rounded hover:bg-gray-800" onclick="document.dispatchEvent(new KeyboardEvent('keydown', {key: 'ArrowLeft'}))" onmouseup="document.dispatchEvent(new KeyboardEvent('keyup', {key: 'ArrowLeft'}))">Flip Left (←)</button>
+                <button class="px-4 py-2 bg-black text-white rounded hover:bg-gray-800" onclick="document.dispatchEvent(new KeyboardEvent('keydown', {key: 'ArrowRight'}))" onmouseup="document.dispatchEvent(new KeyboardEvent('keyup', {key: 'ArrowRight'}))">Flip Right (→)</button>
             </div>
     
             <div class="flex flex-col space-y-4"> 
-                <button class="w-30 px-4 py-2 bg-black text-white rounded hover:bg-gray-800" onclick="sendButtonCommand('up 50')">Up (↑)</button> 
-                <button class="w-30 px-4 py-2 bg-black text-white rounded hover:bg-gray-800" onclick="sendButtonCommand('down 50')">Down (↓)</button> 
+                <button class="w-30 px-4 py-2 bg-black text-white rounded hover:bg-gray-800" onmousedown="document.dispatchEvent(new KeyboardEvent('keydown', {key: 'ArrowUp'}))" onmouseup="document.dispatchEvent(new KeyboardEvent('keyup', {key: 'ArrowUp'}))">Up (↑)</button> 
+                <button class="w-30 px-4 py-2 bg-black text-white rounded hover:bg-gray-800" onmousedown="document.dispatchEvent(new KeyboardEvent('keydown', {key: 'ArrowDown'}))" onmouseup="document.dispatchEvent(new KeyboardEvent('keyup', {key: 'ArrowDown'}))">Down (↓)</button> 
             </div>
     
             <div class="space-y-4 mt-4"> 

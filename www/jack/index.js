@@ -57,6 +57,4 @@ function sendCommand(command) {
 // d: yaw
 // space: emergency stop
 
-
-
 module.exports = {processLogin, main, sleep, sendCommand};

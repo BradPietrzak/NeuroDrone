@@ -32,6 +32,7 @@ function sleep() {
 // c: up/down
 // d: yaw
 // ~: emergency stop
+
 document.addEventListener('keydown', (event) => {
     switch (event.key) {
         case 'w':

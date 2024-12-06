@@ -4,7 +4,6 @@ const bodyParser = require('body-parser');
 const router = express.Router();
 const {sleep, sendCommand} = require('../index');
 
-
 router.post('/', async (req, res) => {
     const {type, key} = req.body;
 
