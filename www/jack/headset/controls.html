@@ -38,37 +38,37 @@
     </nav>
     <div class="top w-full">
         <button id="back" class="absolute top-20 left-2 px-4 py-2 bg-black text-white rounded hover:bg-gray-800" onclick="location.href='/macros'">Home / Back</button>
-        <button id="connect" class="absolute top-20 right-2 px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600" onclick="sendCommand('keydown', 'c')" >Connect</button>
+        <button id="connect" class="absolute top-20 right-2 px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600" onclick="sendCommand('keydown', 'c')" onmouseup="sendCommand('keyup', 'c')" >Connect (c)</button>
     </div>
     
     <div id="controls" class="flex w-30 mt-12 mr-80">
         <div class="flex-1 grid grid-cols-3 gap-3">
-            <button class="px-4 py-2 bg-black text-white rounded hover:bg-gray-800" onclick="sendCommand('keydown', 'q')">Turn Left (q)</button>
-            <button class="px-4 py-2 bg-black text-white rounded hover:bg-gray-800" onclick="sendCommand('keydown', 'w')">Forward (w)</button>
-            <button class="px-4 py-2 bg-black text-white rounded hover:bg-gray-800" onclick="sendCommand('keydown', 'e')">Turn Right (e)</button>
-            <button class="px-4 py-2 bg-black text-white rounded hover:bg-gray-800" onclick="sendCommand('keydown', 'a')">Left (a)</button>
+            <button class="px-4 py-2 bg-black text-white rounded hover:bg-gray-800" onmousedown="sendCommand('keydown', 'q')" onmouseup="sendCommand('keyup', 'q')">Turn Left (q)</button>
+            <button class="px-4 py-2 bg-black text-white rounded hover:bg-gray-800" onmousedown="sendCommand('keydown', 'w')" onmouseup="sendCommand('keyup', 'w')">Forward (w)</button>
+            <button class="px-4 py-2 bg-black text-white rounded hover:bg-gray-800" onmousedown="sendCommand('keydown', 'e')" onmouseup="sendCommand('keyup', 'e')">Turn Right (e)</button>
+            <button class="px-4 py-2 bg-black text-white rounded hover:bg-gray-800" onmousedown="sendCommand('keydown', 'a')" onmouseup="sendCommand('keyup', 'a')">Left (a)</button>
             <div></div>
-            <button class="px-4 py-2 bg-black text-white rounded hover:bg-gray-800" onclick="sendCommand('keydown', 'd')">Right (d)</button>
+            <button class="px-4 py-2 bg-black text-white rounded hover:bg-gray-800" onmousedown="sendCommand('keydown', 'd')" onmouseup="sendCommand('keyup', 'd')">Right (d)</button>
             <div></div>
-            <button class="px-4 py-2 bg-black text-white rounded hover:bg-gray-800" onclick="sendCommand('keydown', 's')">Back (s)</button>
+            <button class="px-4 py-2 bg-black text-white rounded hover:bg-gray-800" onmousedown="sendCommand('keydown', 's')" onmouseup="sendCommand('keyup', 's')">Back (s)</button>
         </div>
     
         <div class="flex-1 flex flex-col items-center space-y-4">
             <div class="grid grid-cols-2 gap-4">
-                <button class="px-4 py-2 bg-black text-white rounded hover:bg-gray-800" onclick="sendCommand('keydown', 'f')">Flip Forward (f)</button>
-                <button class="px-4 py-2 bg-black text-white rounded hover:bg-gray-800" onclick="sendCommand('keydown', 'b')">Flip Backward (b)</button>
-                <button class="px-4 py-2 bg-black text-white rounded hover:bg-gray-800" onclick="sendCommand('keydown', 'ArrowLeft')">Flip Left (←)</button>
-                <button class="px-4 py-2 bg-black text-white rounded hover:bg-gray-800" onclick="sendCommand('keydown', 'ArrowRight')">Flip Right (→)</button>
+                <button class="px-4 py-2 bg-black text-white rounded hover:bg-gray-800" onmousedown="sendCommand('keydown', 'f')" onmouseup="sendCommand('keyup', 'f')">Flip Forward (f)</button>
+                <button class="px-4 py-2 bg-black text-white rounded hover:bg-gray-800" onmousedown="sendCommand('keydown', 'b')" onmouseup="sendCommand('keyup', 'b')">Flip Backward (b)</button>
+                <button class="px-4 py-2 bg-black text-white rounded hover:bg-gray-800" onmousedown="sendCommand('keydown', 'ArrowLeft')" onmouseup="sendCommand('keyup', 'ArrowLeft')">Flip Left (←)</button>
+                <button class="px-4 py-2 bg-black text-white rounded hover:bg-gray-800" onmousedown="sendCommand('keydown', 'ArrowRight')" onmouseup="sendCommand('keyup', 'ArrowRight')">Flip Right (→)</button>
             </div>
     
             <div class="flex flex-col space-y-4"> 
-                <button class="w-30 px-4 py-2 bg-black text-white rounded hover:bg-gray-800" onclick="sendCommand('keydown', 'ArrowUp')">Up (↑)</button> 
-                <button class="w-30 px-4 py-2 bg-black text-white rounded hover:bg-gray-800" onclick="sendCommand('keydown', 'ArrowDown')">Down (↓)</button> 
+                <button class="w-30 px-4 py-2 bg-black text-white rounded hover:bg-gray-800" onmousedown="sendCommand('keydown', 'ArrowUp')" onmouseup="sendCommand('keyup', 'ArrowUp')">Up (↑)</button> 
+                <button class="w-30 px-4 py-2 bg-black text-white rounded hover:bg-gray-800" onmousedown="sendCommand('keydown', 'ArrowDown')" onmouseup="sendCommand('keyup', 'ArrowDown')">Down (↓)</button> 
             </div>
     
             <div class="space-y-4 mt-4"> 
-                <button id="takeoff" class="w-36 px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600" onclick="sendCommand('keydown', 't')">Take Off (t)</button> 
-                <button id="land" class="w-36 px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600" onclick="sendCommand('keydown', 'l')">Land (l)</button> 
+                <button id="takeoff" class="w-36 px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600" onmousedown="sendCommand('keydown', 't')" onmouseup="sendCommand('keyup', 't')">Take Off (t)</button> 
+                <button id="land" class="w-36 px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600" onmousedown="sendCommand('keydown', 'l')" onmouseup="sendCommand('keyup', 'l')">Land (l)</button> 
             </div>
         </div>
     </div>
@@ -107,8 +107,6 @@
                 console.error('Error occurred while connecting:', error);
             }
         }
-        
-        
     </script>
 </body>
 </html>
